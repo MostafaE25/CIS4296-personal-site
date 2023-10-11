@@ -26,16 +26,17 @@
 
     <!-- Remove this and fill in your name & photo in the required areas -->
     <script>
-      fetch('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.rawpixel.com%2Fsearch%2Fdog&psig=AOvVaw0UKY3M5-uwqCM3L86dYESa&ust=1697140303618000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCOjK57ni7oEDFQAAAAAdAAAAABAE')
+      fetch('https://randomuser.me/api/?inc=name,picture')
         .then((response) => response.json())
         .then(({ results }) => results[0])
         .then(({ name, picture }) => {
-          document.querySelector('#name').innerText = 'Mostafa Elasmar'
+          document.querySelector('#name').innerText = name.first
           document.querySelector(
             '.navbar-brand'
-          ).innerText = `Mostafa Elasmar`
-          document.title = `Mostafa Elasmar's Personal Site`
+          ).innerText = `${name.first} ${name.last}`
+          document.title = `${name.first} ${name.last} Personal Site`
           document.querySelector('#profilepic').src = picture.large
+        })
     </script>
 
     <link href="styles/theme.css" rel="stylesheet" />
